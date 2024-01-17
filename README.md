@@ -7,3 +7,10 @@ My startup project is for categorizing and discovering different useful websites
 ## Design
 
 ![home page](images/home.jpg)
+![home page](images/category.jpg)
+![home page](images/find.jpg)
+![home page](images/suggestion.jpg)
+
+
+
+
