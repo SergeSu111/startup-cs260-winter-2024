@@ -11,6 +11,10 @@ My startup project is for categorizing and discovering different useful websites
 ![home page](images/find.jpg)
 ![home page](images/suggestion.jpg)
 
+Here are all the pics. The home page shows all the websites on my project. The category page categorizes all the websites by different categories.  The find page can categorize all pages by different characteristics. The last page is the suggestion, users can log in to their account and leave their comments on the website.
+
+## Key Features
+
 
 
 
