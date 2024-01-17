@@ -6,4 +6,4 @@ My startup project is for categorizing and discovering different useful websites
 
 ## Design
 
-![Image Alt Text](images/home.jpg)
+![home page](images/home.jpg)
