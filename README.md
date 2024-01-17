@@ -14,6 +14,11 @@ My startup project is for categorizing and discovering different useful websites
 Here are all the pics. The home page shows all the websites on my project. The category page categorizes all the websites by different categories.  The find page can categorize all pages by different characteristics. The last page is the suggestion, users can log in to their account and leave their comments on the website.
 
 ## Key Features
+- Users can easily find the different websites by the categories and characters they need. 
+- Users can easily find the brief introduction and link of each website they are looking for.
+- Users can create and log in to their accounts to leave their valuable comments and suggestions.
+  
+
 
 
 
