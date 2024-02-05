@@ -30,4 +30,12 @@ I am going to use the required technologies in the following ways.
 - DB/ Login - After I get the data from Javascript and Service, I can use DB to store these data, so that I will never lose it.
 - WebSocket - By using the webSocket, Any user is updating something to the website, and the website can automatically update these contexts without refreshing. For example, if a user leaves his comment, the website gonna automatically updates his comment without refreshing.
 - React - Application ported to use the React web framework.
+
+## HTML:
+ HTML: For each page, I did header, main and footer to be structure. What is more, I use nav to be my navigation in header. I also use a lot of div for the layer. I use <a> to connect my each file page with each other. I use a lot of images on it. I also update some textual content so that you know what these html doing. 
+ LOGIN: In my index.html. I use login, so that user can type their name and login to account and go to the home page.
+ Database: I can store the user's name and user's comment they leave in suggestion page.
+ WebSocket: In my suggestion page, I created a form, so that people can leave their information and comments in the form and submit it. 
+ 3rd party service calls: In my suggestion page, I will create a random img on it. So that We can request and get a random picture, but not the current picture in suggestion page.
+ 
   
