@@ -1,0 +1,41 @@
+.light {
+    img {
+        max-width: 23px;
+        max-height: 23px;
+    }
+}
+
+
+a {
+    text-decoration: none;
+    color: black;
+}
+body{
+    font-family: "Protest Riot", sans-serif;
+    background-color: gray;
+}
+
+menu
+{
+    display: flex;
+    list-style-type: none;
+}
+
+.li
+{
+    flex: 1;
+    display: inline inline-block;
+    text-align: center;
+}
+
+.title
+{
+    display: flex;
+}
+
+.small_title
+{
+    flex: 1;
+    text-align: center;
+    font-size: 35px;
+}
