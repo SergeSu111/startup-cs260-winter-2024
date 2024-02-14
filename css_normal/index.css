@@ -1,3 +1,6 @@
+
+
+
 .light {
     img {
         max-width: 23px;
@@ -8,11 +11,13 @@
 
 a {
     text-decoration: none;
-    color: black;
+    color: white;
 }
-body{
+
+body {
     font-family: "Protest Riot", sans-serif;
-    background-color: gray;
+    background-image: url('/images/index.png');
+    color:white;
 }
 
 menu
@@ -24,7 +29,7 @@ menu
 .li
 {
     flex: 1;
-    display: inline inline-block;
+    display:inline-block;
     text-align: center;
 }
 
@@ -39,3 +44,42 @@ menu
     text-align: center;
     font-size: 35px;
 }
+
+.main
+{
+    display: flex;
+    height: 700px;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.main h1
+{
+    text-align: center;
+}
+
+.describe
+{
+    text-align: center;
+    margin: 5px;
+}
+
+
+.form
+{
+    text-align: center;
+}
+
+footer
+{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    height: 30px;
+}
+
+
