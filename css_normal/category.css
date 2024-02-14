@@ -1,0 +1,12 @@
+body
+{
+    font-family: "Protest Riot", sans-serif;
+    background-image: url('../images/index.png');
+    margin: 0px;
+}
+
+header, footer
+{
+    display: flex;
+    flex: 0;
+}

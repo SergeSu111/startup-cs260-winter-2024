@@ -56,11 +56,11 @@ a {
 }
 
 
-.parent_byu
+/* .parent_byu
 {
     position: relative;
     display: flex;
-}
+} */
 .parent_byu img
 {
     width: 100%;
@@ -85,4 +85,15 @@ a {
 
 .card {
     margin: 3rem 0 0 0;
+}
+
+
+.Goweb
+{
+    color: black;
+}
+
+footer
+{
+    color: white;
 }
