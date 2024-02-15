@@ -29,7 +29,8 @@
     <main>
                         <h2>Leave your comments</h2>
                         <form action="/submit_form", method = "post">
-                            <label for="name">Name:</label>
+                            <div class = "subform">
+                                <label for="name">Name:</label>
                             <input type="text" id = "name" name = "name" placeholder="Enter your name" required>
 
                             <br>
@@ -40,9 +41,10 @@
 
                             <div class = "comment">
                                 <label for="comments">Comment:</label>
-                                <textarea name="comments" id="comments" cols="10" rows="10" placeholder="Enter your comments" required></textarea>
+                                <textarea name="comments" id="comments" cols="17" rows="5" placeholder="Enter your comments" required></textarea>
                             </div>
                             <br>
+                            </div>
                             <button type="submit">Submit</button>
                         </form>
 
