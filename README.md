@@ -32,10 +32,13 @@ I am going to use the required technologies in the following ways.
 - React - Application ported to use the React web framework.
 
 ## HTML:
- HTML: For each page, I did header, main and footer to be structure. What is more, I use nav to be my navigation in header. I also use a lot of div for the layer. I use <a> to connect my each file page with each other. I use a lot of images on it. I also update some textual content so that you know what these html doing. 
- LOGIN: In my index.html. I use login, so that user can type their name and login to account and go to the home page.
- Database: I can store the user's name and user's comment they leave in suggestion page.
- WebSocket: In my suggestion page, I created a form, so that people can leave their information and comments in the form and submit it. 
- 3rd party service calls: In my suggestion page, I will create a random img on it. So that We can request and get a random picture, but not the current picture in suggestion page.
+ - HTML: For each page, I did header, main and footer to be structure. What is more, I use nav to be my navigation in header. I also use a lot of div for the layer. I use <a> to connect my each file page with each other. I use a lot of images on it. I also update some textual content so that you know what these html doing. 
+ - LOGIN: In my index.html. I use login, so that user can type their name and login to account and go to the home page.
+ - Database: I can store the user's name and user's comment they leave in suggestion page.
+ - WebSocket: In my suggestion page, I created a form, so that people can leave their information and comments in the form and submit it. 
+ - 3rd party service calls: In my suggestion page, I will create a random img on it. So that We can request and get a random picture, but not the current picture in suggestion page.
+
+## CSS:
+In all three structures I have linked the CSS files with selectors. For example, the size of the image has changed. I changed the subscript of the a tag. I changed the font size and color. I used bootstrap to change the shape and color of the button. I also made my own templates for each of the small sites using the card in Bootstrap. I also used flex for the responsive design. I made some specific tags in specific places in the box.
  
   
