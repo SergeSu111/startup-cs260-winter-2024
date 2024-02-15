@@ -1,0 +1,86 @@
+body
+{
+    font-family: "Protest Riot", sans-serif;
+    background-image: url('../images/index.png');
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+
+a
+{
+    text-decoration: none;
+    color: white;
+}
+header, footer
+{
+    display: flex;
+    flex: 0;
+}
+
+/* nav */
+.navigate
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+/* nav a -> title  */
+.nav_div
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 35px;
+}
+
+.light {
+    img {
+        max-width: 23px;
+        max-height: 23px;
+    }
+}
+
+.nav_div_cate
+{
+    display: flex;
+    flex-direction: row;
+ 
+}
+
+.li
+{
+    flex: 1;
+    display: inline-block;
+    text-align: center;
+}
+
+h2
+{
+    color: white;
+}
+
+form
+{
+    color: white;
+}
+
+main
+{
+    display:flex;
+    flex-direction: column;
+}
+
+label
+{
+    color:white;
+}
+
+.comment
+{
+    display: flex;
+    
+}
