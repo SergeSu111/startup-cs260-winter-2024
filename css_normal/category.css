@@ -133,3 +133,54 @@ h3
 
 }
 
+.level-start-college
+{
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+}
+
+
+.level-start-shopping
+{
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+}
+
+.level-start-delivery
+{
+    display: inline-block;
+    text-align: center;
+    font-size: 20px;
+}
+
+.level-end-delivery
+{
+    float: right;
+    padding-right:2em;
+    font-size: 20px;
+}
+
+
+.level-end-shopping
+{
+    float: right;
+    padding-right:2em;
+    font-size: 20px;
+}
+
+.level-end-college
+{
+    float: right;
+    padding-right:2em;
+    font-size: 20px;
+}
+
+
+.level-end-byu
+{
+    float: right;
+    padding-right:2em;
+    font-size: 20px;
+}
