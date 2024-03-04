@@ -47,9 +47,14 @@ function input_web()
     // a
     let small_a = document.createElement("a");
     small_a.setAttribute("class", "btn btn-primary");
-    small_a.setAttribute("href", url);
+    // small_a.setAttribute("href", url);
     small_a.textContent = "Go To the Website";
+    small_a.href = "https://" + url;
     small_div.appendChild(small_a);
+
+
+    // apend small div into big div
+    big_div.appendChild(small_div);
 
 
     big_whole_div.appendChild(big_div); // after all set, append big_div into big_body
