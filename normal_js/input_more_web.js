@@ -59,17 +59,44 @@ function input_web()
     let input_img = prompt("Please give an image url");
     let title = prompt("Please tell me the title of website.");
     let category = prompt("Please tell me the category of this website.");
-    
 
+    updateCategoriesInLocalStorage(category);
     create_website_document(url, descript, input_img, title);
     store_local(url, descript, input_img, title, category); // already stored it
+}
+
+function updateCategoriesInLocalStorage(category)
+{
+    const defaultCategories = {
+        "Programming Tools": 2,
+        "BYU": 4,
+        "College information": 1,
+        "Shopping": 1,
+        "Delivery": 1
+    };
+
+    // Check localstorage for categories.
+    let categories = JSON.parse(localStorage.getItem("categories"));
+    // If nothing in localstorage, then initilize with default 4 categories
+    if (categories === null) {
+        localStorage.setItem("categories", JSON.stringify(defaultCategories));
+        categories = defaultCategories;
+    }
+
+    if (categories[category]) {
+        categories[category]++;
+    } else {
+        categories[category] = 1;
+    }
+    
+    localStorage.setItem("categories", JSON.stringify(categories));
 }
 
 
 function store_local(url, des, img, title, category)   // make the data that adding website put into local storage
 {
     let my_array = JSON.parse(localStorage.getItem("Web_list"));  // if the web_List local storage is never declared
-    if (my_array == null) {  // the array is null 
+    if (my_array === null) {  // the array is null 
         my_array = [];  // so create an array 
     }
 
