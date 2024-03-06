@@ -40,5 +40,15 @@ I am going to use the required technologies in the following ways.
 
 ## CSS:
 In all three structures I have linked the CSS files with selectors. For example, the size of the image has changed. I changed the subscript of the a tag. I changed the font size and color. I used bootstrap to change the shape and color of the button. I also made my own templates for each of the small sites using the card in Bootstrap. I also used flex for the responsive design. I made some specific tags in specific places in the box.
- 
+
+
+ ## Javascript:
+  - Login: For login, I use querySelctor to grab the button for logging in in HTML. And I wrote a function called log_In. I stored the username that the User input into local storage. And use window. location. href to go to home_page.html.  I also add an event listener when the user clicks the button that logs in. I also wrote the event.reventDefault() to make sure the user inputs their usernames and then logs in.
+
+- Database: For the database, I stored the username and the users' input information when they clicked the "add new website" as "Web_list". So that each time the page is refreshed, I can still get the information in local storage and store the new website that the user added by calling create_website_document(). I can also set the default categories in local storage as categories. If the new category that the user added is not in the default category in local storage. Then I can add that new category into the category object. Then set it into local storage.
+
+- Websocket: I created a list that stores some fake submission suggestions. And I just use random() to randomly pick an element in the list. Then I use querySelector to grab the div I want to store in HTML. Finally, I use the innerHTML to add a new small div with the suggestion I want into the small div. Lastly, I make the function called for 5000 seconds each time.
+
+- JavaScript Support for interaction logic: I already included the logic in the above parts.
+  - 
   
