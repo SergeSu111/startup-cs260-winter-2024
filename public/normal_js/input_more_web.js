@@ -59,10 +59,21 @@ function input_web()
     let input_img = prompt("Please give an image url");
     let title = prompt("Please tell me the title of website.");
     let category = prompt("Please tell me the category of this website.");
+    
+    
+    let my_object = {   // create an object to store the data 
+        url: url,
+        des: des,
+        img: img,
+        title: title,
+        category: category
+    };
+
+    
 
     updateCategoriesInLocalStorage(category);
     create_website_document(url, descript, input_img, title);
-    store_local(url, descript, input_img, title, category); // already stored it
+    store_local(my_object); // already stored it
 }
 
 function updateCategoriesInLocalStorage(category)
@@ -93,20 +104,13 @@ function updateCategoriesInLocalStorage(category)
 }
 
 
-function store_local(url, des, img, title, category)   // make the data that adding website put into local storage
+function store_local(my_object)   // make the data that adding website put into local storage
 {
     let my_array = JSON.parse(localStorage.getItem("Web_list"));  // if the web_List local storage is never declared
     if (my_array === null) {  // the array is null 
         my_array = [];  // so create an array 
     }
 
-    let my_object = {   // create an object to store the data 
-        url: url,
-        des: des,
-        img: img,
-        title: title,
-        category: category
-    };
 
     my_array.push(my_object); // push the object into array
     localStorage.setItem("Web_list", JSON.stringify(my_array));  
@@ -125,6 +129,15 @@ function loadWebsiteFromLocalStorage() {
         create_website_document(my_array[i].url, my_array[i].des, my_array[i].img, my_array[i].title); // take the data from local storage and create the website again
     }
        
+}
+
+async function fetch_new_web(my_object)
+{
+    const response = await fetch('/addingWebsite', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(my_object),
+      });
 }
 
 my_button.addEventListener("click", input_web);

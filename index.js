@@ -11,12 +11,30 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // Router for service endpoints 
-var apiRouter = express.Router();
-app.use("/api", apiRouter);
+// var apiRouter = express.Router();
+// app.use("/api", apiRouter);
 
 // Specific endpoints
+let my_web_Infors = [];
 app.post("/addingWebsite", (req, res) =>
 {
-    new
+    let reqObj = JSON.parse(req.body); // 将req 转换为js object
+    let webSpot = updateWeb(reqObj); // 将转换后的reqObj 放入updateWeb来得到response which is a 
+    res.send(webSpot);
 }
-)
+);
+
+
+function updateWeb(webInfor)
+{
+    
+
+}
+
+
+
+
+app.listen(port, () => 
+{
+    console.log(`Listening on port ${port}`);
+});
