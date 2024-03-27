@@ -69,39 +69,15 @@ function input_web()
         category: category
     };
 
-    
+    fetch_new_web(my_object);
+
+
 
     updateCategoriesInLocalStorage(category);
     create_website_document(url, descript, input_img, title);
     store_local(my_object); // already stored it
 }
 
-function updateCategoriesInLocalStorage(category)
-{
-    const defaultCategories = {
-        "Programming Tools": 2,
-        "BYU": 4,
-        "College information": 1,
-        "Shopping": 1,
-        "Delivery": 1
-    };
-
-    // Check localstorage for categories.
-    let categories = JSON.parse(localStorage.getItem("categories"));
-    // If nothing in localstorage, then initilize with default 4 categories
-    if (categories === null) {
-        localStorage.setItem("categories", JSON.stringify(defaultCategories));
-        categories = defaultCategories;
-    }
-
-    if (categories[category]) {
-        categories[category]++;
-    } else {
-        categories[category] = 1;
-    }
-    
-    localStorage.setItem("categories", JSON.stringify(categories));
-}
 
 
 function store_local(my_object)   // make the data that adding website put into local storage
