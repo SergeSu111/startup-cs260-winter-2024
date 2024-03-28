@@ -29,8 +29,16 @@ const defaultCategories = {  // PUT INTO BACK END  不用localstorage 了
 app.post("/addingWebsite", (req, res) =>
 {
     let reqObj = JSON.parse(req.body); // 将req 转换为js object
-    let webSpot = updateWeb(reqObj); // 将转换后的reqObj 放入updateWeb来得到response which is a webSpot
-    res.send(webSpot);
+    try
+    {
+        updateWeb(reqObj); // 将转换后的reqObj 放入updateWeb来得到response which is a webSpot
+        res.sendStatus(200);
+    }
+    catch
+    {
+        res.status(400).send({"message": "You input a wrong information."});
+    }
+   
 }
 );
 
@@ -64,8 +72,6 @@ function updateWeb(webInfor)
     my_web_Infors.push(webInfor); 
     // 将用户input的webInfor放入array中 暂时当作db用. 
     // 只需要做这一步 因为 不管用户输入的input是否在数据库里 都需要加到数据库里
-
-
 }
 
 

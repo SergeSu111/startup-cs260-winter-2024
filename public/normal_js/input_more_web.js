@@ -69,21 +69,11 @@ function input_web()
         category: category
     };
 
-    fetch_new_web(my_object);
-
+    fetch_new_web(my_object); // call this already updated my category and store the input into db
 
     create_website_document(url, descript, input_img, title); // because this is for dom, I will not write this in back-end
-    store_local(my_object); // already stored it
 }
 
-
-
-async function store_server(my_object)   // make the data that adding website put into local storage
-{
-
-    fetch_store_webInfor(my_object);  // call the fetch 
-    
-}
 
 async function loadWebsiteFromServer() {
   
@@ -99,11 +89,19 @@ async function loadWebsiteFromServer() {
 
 async function fetch_new_web(my_object)  // for 总的
 {
-    const response = await fetch('/addingWebsite', {
-        method: 'POST',
-        headers: {'content-type': 'application/json'},
-        body: JSON.stringify(my_object),
-      });
+    try
+    {
+        const response = await fetch('/addingWebsite', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(my_object),
+          });
+    }
+    catch
+    {
+        alert("You input a wrong information.");
+    }
+    
 }
 
 
@@ -120,7 +118,7 @@ async function fetch_new_web(my_object)  // for 总的
 my_button.addEventListener("click", input_web);
 
 document.addEventListener("DOMContentLoaded", (event) => {  // When we reloaded the page we just call the event and get the website from local storage. S
-    loadWebsiteFromLocalStorage();
+    loadWebsiteFromServer(); // 每当刷新的时候都会调用这个异步函数来从server里调数据
 });
 
 
