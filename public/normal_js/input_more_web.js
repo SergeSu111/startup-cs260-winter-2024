@@ -72,30 +72,33 @@ function input_web()
     fetch_new_web(my_object);
 
 
-
-    updateCategoriesInLocalStorage(category);
-    create_website_document(url, descript, input_img, title);
+    create_website_document(url, descript, input_img, title); // because this is for dom, I will not write this in back-end
     store_local(my_object); // already stored it
 }
 
 
 
-function store_local(my_object)   // make the data that adding website put into local storage
+async function store_server(my_object)   // make the data that adding website put into local storage
 {
-    let my_array = JSON.parse(localStorage.getItem("Web_list"));  // if the web_List local storage is never declared
-    if (my_array === null) {  // the array is null 
-        my_array = [];  // so create an array 
-    }
+
+    fetch_store_webInfor(my_object);  // call the fetch 
 
 
-    my_array.push(my_object); // push the object into array
-    localStorage.setItem("Web_list", JSON.stringify(my_array));  
+
+    // let my_array = JSON.parse(localStorage.getItem("Web_list"));  // if the web_List local storage is never declared
+    // if (my_array === null) {  // the array is null 
+    //     my_array = [];  // so create an array 
+    // }
+
+
+    // my_array.push(my_object); // push the object into array
+    // localStorage.setItem("Web_list", JSON.stringify(my_array));  
     // take array and change to string with json formate.
     // make the array set into local storage
     
 }
 
-function loadWebsiteFromLocalStorage() {
+async function loadWebsiteFromLocalStorage() {
     // get the data from localstorage
     // loop through each website
     let my_array = JSON.parse(localStorage.getItem("Web_list")); // get the local storage 因为数据是以object的形式放在local storgae的。 array里的每一个元素都是一个object
@@ -107,7 +110,7 @@ function loadWebsiteFromLocalStorage() {
        
 }
 
-async function fetch_new_web(my_object)
+async function fetch_new_web(my_object)  // for 总的
 {
     const response = await fetch('/addingWebsite', {
         method: 'POST',
@@ -115,6 +118,17 @@ async function fetch_new_web(my_object)
         body: JSON.stringify(my_object),
       });
 }
+
+
+async function fetch_store_webInfor(my_object) // FOR 将增加的网页信息存储到server里
+{
+    const response = await fetch('/storeWebInformation', {
+        method: 'POST',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(my_object),
+      });
+}
+
 
 my_button.addEventListener("click", input_web);
 
