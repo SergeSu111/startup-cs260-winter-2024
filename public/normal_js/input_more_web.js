@@ -63,8 +63,8 @@ function input_web()
     
     let my_object = {   // create an object to store the data 
         url: url,
-        des: des,
-        img: img,
+        des: descript,
+        img: input_img,
         title: title,
         category: category
     };
@@ -89,13 +89,14 @@ async function loadWebsiteFromServer() {
 
 async function fetch_new_web(my_object)  // for 总的
 {
+    console.log("hELLO: ", my_object);
     try
     {
         const response = await fetch('/addingWebsite', {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(my_object),
-          });
+        });
     }
     catch
     {

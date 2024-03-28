@@ -28,7 +28,8 @@ const defaultCategories = {  // PUT INTO BACK END  不用localstorage 了
 
 app.post("/addingWebsite", (req, res) =>
 {
-    let reqObj = JSON.parse(req.body); // 将req 转换为js object
+    console.log("Hello: ", req.body);
+    let reqObj = req.body; // 将req 转换为js object
     try
     {
         updateWeb(reqObj); // 将转换后的reqObj 放入updateWeb来得到response which is a webSpot
