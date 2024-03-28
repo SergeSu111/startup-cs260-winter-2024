@@ -28,15 +28,11 @@ async function loadCategoriesFromServer() {
     //     "Delivery": 1
     // };
 
-    
+
     // get the categories from server
     let categories = await fetch("/getCategories");
 
     // If nothing in localstorage, then initilize with default 4 categories
-    if (categories === null) {
-        localStorage.setItem("categories", JSON.stringify(defaultCategories));
-        categories = defaultCategories;
-    }
 
     // Display categories in localStorage
     for (const key in categories) {
@@ -47,7 +43,6 @@ async function loadCategoriesFromServer() {
 
 }
 
-
-document.addEventListener("DOMContentLoaded", (event) => {  // When we reloaded the page we just call the event and get the website from local storage. S
-    loadCategoriesFromLocalStorage();
+document.addEventListener("DOMContentLoaded", () => {  // When we reloaded the page we just call the event and get the website from local storage. S
+    loadCategoriesFromServer();
 });

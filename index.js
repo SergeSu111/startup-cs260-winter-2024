@@ -1,4 +1,4 @@
-const express = require(express); // get the express 
+const express = require("express"); // get the express 
 const app = express(); // construct the express to app
 
 // get the serivce port 4000, 
@@ -44,11 +44,17 @@ app.post("/addingWebsite", (req, res) =>
 
 
 // 从server里得到用户输入数据 
-app.get("/getWebInforsFromDB", (req, res) =>
+app.get("/getWebInforsFromDB", (_req,res) =>
 {
-    let reqObj = JSON.parse(req.body); // 将req 转换为js object
     res.send(my_web_Infors); // 将这个array as db 传回给用户
 })
+
+
+app.get("/getCategories", (_req, res) =>
+{
+    res.send(defaultCategories);
+})
+
 
 
 function updateWeb(webInfor)
@@ -73,9 +79,6 @@ function updateWeb(webInfor)
     // 将用户input的webInfor放入array中 暂时当作db用. 
     // 只需要做这一步 因为 不管用户输入的input是否在数据库里 都需要加到数据库里
 }
-
-
-
 
 
 app.listen(port, () => 
