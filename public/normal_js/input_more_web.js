@@ -82,30 +82,17 @@ async function store_server(my_object)   // make the data that adding website pu
 {
 
     fetch_store_webInfor(my_object);  // call the fetch 
-
-
-
-    // let my_array = JSON.parse(localStorage.getItem("Web_list"));  // if the web_List local storage is never declared
-    // if (my_array === null) {  // the array is null 
-    //     my_array = [];  // so create an array 
-    // }
-
-
-    // my_array.push(my_object); // push the object into array
-    // localStorage.setItem("Web_list", JSON.stringify(my_array));  
-    // take array and change to string with json formate.
-    // make the array set into local storage
     
 }
 
-async function loadWebsiteFromLocalStorage() {
-    // get the data from localstorage
-    // loop through each website
-    let my_array = JSON.parse(localStorage.getItem("Web_list")); // get the local storage 因为数据是以object的形式放在local storgae的。 array里的每一个元素都是一个object
-    for (let i = 0; i < my_array.length; i++)
+async function loadWebsiteFromServer() {
+  
+    const myWebInforsFromDB = await fetch("/getWebInforsFromDB");  // get the webInfors from server, default is fetch
+
+    for (let i = 0; i < myWebInforsFromDB.length; i++)
     {
          // pass that data as parameters into createWebsiteElement(...)
-        create_website_document(my_array[i].url, my_array[i].des, my_array[i].img, my_array[i].title); // take the data from local storage and create the website again
+        create_website_document(myWebInforsFromDB[i].url, myWebInforsFromDB[i].des, myWebInforsFromDB[i].img, myWebInforsFromDB[i].title); // take the data from local storage and create the website again
     }
        
 }
@@ -120,14 +107,14 @@ async function fetch_new_web(my_object)  // for 总的
 }
 
 
-async function fetch_store_webInfor(my_object) // FOR 将增加的网页信息存储到server里
-{
-    const response = await fetch('/storeWebInformation', {
-        method: 'POST',
-        headers: {'content-type': 'application/json'},
-        body: JSON.stringify(my_object),
-      });
-}
+// async function fetch_store_webInfor(my_object) // FOR 将增加的网页信息存储到server里
+// {
+//     const response = await fetch('/storeWebInformation', {
+//         method: 'POST',
+//         headers: {'content-type': 'application/json'},
+//         body: JSON.stringify(my_object),
+//       });
+// }
 
 
 my_button.addEventListener("click", input_web);

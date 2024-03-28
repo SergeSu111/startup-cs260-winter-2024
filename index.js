@@ -34,10 +34,17 @@ app.post("/addingWebsite", (req, res) =>
 }
 );
 
+
+// 从server里得到用户输入数据 
+app.get("/getWebInforsFromDB", (req, res) =>
+{
+    let reqObj = JSON.parse(req.body); // 将req 转换为js object
+    res.send(my_web_Infors); // 将这个array as db 传回给用户
+})
+
+
 function updateWeb(webInfor)
 {
-    my_web_Infors.push(webInfor); // 将用户input的webInfor放入array中 暂时当作db用.
-
     // update category 
     // if the webInfor.category in defaltCategries. 
     if (webInfor.category in defaultCategories)
@@ -53,7 +60,12 @@ function updateWeb(webInfor)
         
     
     // update web spot 
-    
+
+    my_web_Infors.push(webInfor); 
+    // 将用户input的webInfor放入array中 暂时当作db用. 
+    // 只需要做这一步 因为 不管用户输入的input是否在数据库里 都需要加到数据库里
+
+
 }
 
 
