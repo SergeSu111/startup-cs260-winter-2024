@@ -1,3 +1,5 @@
+//require("express");
+
 function createCategoryListItem(title, count) 
 {
     let new_li = document.createElement("li");
@@ -30,14 +32,20 @@ async function loadCategoriesFromServer() {
 
 
     // get the categories from server
-    let categories = await fetch("/getCategories");
+    const response = await fetch("/getCategories");
+    //console.log(response.json()); // make json to be object
+    const categories = await response.json();
+    console.log(categories); 
+
 
     // If nothing in localstorage, then initilize with default 4 categories
 
     // Display categories in localStorage
     for (const key in categories) {
         const title = key;
+        console.log("title: " + title);
         const count = categories[key];
+        console.log("value: " + categories[key]);
         createCategoryListItem(title, count);
     }
 
