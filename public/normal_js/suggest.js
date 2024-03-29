@@ -19,9 +19,6 @@ async function submit(event)
     event.preventDefault();  //阻止提交默认表单
 
     // do a post fetch 
-    try
-    {
-
         const response = await fetch('/submit_form', {
             method: 'POST',
             body: new FormData(event.target) // formData is json object?
@@ -37,9 +34,6 @@ async function submit(event)
             // response.statusText 返回状态码的描述 而response.status只返回状态码
         }
     }
-     catch(error)
-    {
-        alert("the form is not right", error.message);
-    }
-}
+    
+
     
