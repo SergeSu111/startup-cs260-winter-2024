@@ -96,4 +96,11 @@ label
     color: white;
 }
 
+#quote
+{
+    text-align: center;
+    color: white;
+    margin: 25px auto;
+}
+
 
