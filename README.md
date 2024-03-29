@@ -50,5 +50,14 @@ In all three structures I have linked the CSS files with selectors. For example,
 - Websocket: I created a list that stores some fake submission suggestions. And I just use random() to randomly pick an element in the list. Then I use querySelector to grab the div I want to store in HTML. Finally, I use the innerHTML to add a new small div with the suggestion I want into the small div. Lastly, I make the function called for 5000 seconds each time.
 
 - JavaScript Support for interaction logic: I already included the logic in the above parts.
-  - 
+- 
+## API SERVICE:
+ - Adding new website: I removed some of the logic from the previous js and rewrote it to index.js as a backend. I removed the local storage from the previous js and rewrote it to index.js as the backend. I wrote a few arrays in the backend to act as a database for storing user requests for posts. Then I return some status and message to the user. On the frontend, I created a fetch and path to connect and match with the backend. In the end, I was able to successfully accomplish the same thing with the backend as the adding website, updating the website and the categories. 
+
+- Suggest form:In the request form, I've extracted the entire form using dom on the frontend and made a submit event listener. Once I click submit, the submit function is triggered to turn the submitted form into a formData that is passed to the backend as a request. And if the backend returns something OK. Otherwise, it tells the user that it didn't work. On the backend, I'm using the same path and I'm using the upload.none() function to make sure that I'm not passing any special files to my form. Finally, if there is an error with the request or network, I return a specific status and a description of the error to the user.
+
+  
+-  third party API: I turned in a third party api in the suggestion page, this api is a function that can automatically generate a famous person's quote. I called this path directly from my frontend. Because it's not stored on my own server. Every time the page is refreshed, a new quote is generated. And I've CSS'd the quote to make the text white and centered. 
+
+
   
