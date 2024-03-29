@@ -40,7 +40,7 @@ async function submit(event)
 
 
 // for third-part quote request 
-function displayQuote(data) {
+function displayQuote() {
     fetch('https://api.quotable.io/random')
       .then((response) => response.json())
       .then((data) => {
@@ -58,6 +58,8 @@ function displayQuote(data) {
         containerEl.appendChild(authorEl);
       });
   }
+
+  displayQuote();
     
 
     
