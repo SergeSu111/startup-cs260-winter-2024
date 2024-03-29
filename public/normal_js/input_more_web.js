@@ -89,7 +89,7 @@ async function loadWebsiteFromServer() {
 
 async function fetch_new_web(my_object)  // for 总的
 {
-    console.log("hELLO: ", my_object);
+    //console.log("hELLO: ", my_object);
     try
     {
         const response = await fetch('/addingWebsite', {
