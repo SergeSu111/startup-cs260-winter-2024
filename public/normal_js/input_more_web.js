@@ -97,10 +97,15 @@ async function fetch_new_web(my_object)  // for 总的
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(my_object),
         });
+
+        if (!response.ok)
+        {
+            alert((await response.json()).message); // get back the error message from the server
+        }
     }
     catch
     {
-        alert("You input a wrong information.");
+        alert("");
     }
     
 }

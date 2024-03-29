@@ -1,6 +1,7 @@
 const express = require("express"); // get the express 
 const app = express(); // construct the express to app
-
+const multer = require("multer"); // just pasing the formData type requests. 
+const upload = multer({});
 // get the serivce port 4000, 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -10,12 +11,16 @@ app.use(express.json());
 // static the front end conent
 app.use(express.static("public"));
 
+
+
 // Router for service endpoints 
 // var apiRouter = express.Router();
 // app.use("/api", apiRouter);
 
 // Specific endpoints
 let my_web_Infors = [];
+let my_submit = [];
+
 
 const defaultCategories = {  // PUT INTO BACK END  不用localstorage 了
     "Programming Tools": 2,
@@ -43,6 +48,21 @@ app.post("/addingWebsite", (req, res) =>
 }
 );
 
+// uploard.none() menas just submitting text.
+app.post("/submit_form", upload.none(), (req, res) =>
+{
+    try{
+        const formData = req.body;
+        my_submit.push(formData);
+        res.sendStatus(200);
+    }
+    catch (error)
+    {
+        res.status(400).send(error.message);
+    }
+});
+
+
 
 // 从server里得到用户输入数据 
 app.get("/getWebInforsFromDB", (_req,res) =>
@@ -56,6 +76,7 @@ app.get("/getCategories", (_req, res) =>
     res.send(defaultCategories);
 })
 
+// multer
 
 
 function updateWeb(webInfor)
