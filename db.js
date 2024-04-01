@@ -1,0 +1,1 @@
+const config = require("./dbConfig.json"); // call the config
