@@ -2,6 +2,7 @@ const express = require("express"); // get the express
 const createApplication = require("express/lib/express");
 const app = express(); // construct the express to app
 const multer = require("multer"); // just pasing the formData type requests. 
+const { loginGetUser } = require("./db");
 const upload = multer({});
 // get the serivce port 4000, 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -87,11 +88,30 @@ app.post("/register/:username", (req, res) =>
     
         // put the username into the db function
         createUser(username, password); // stored in db
+        res.sendStatus(200); // send back 200
     }
     catch (error)
     {
         res.status(400).send(error.message);
     }
+})
+
+
+app.post ("/login/:username", (req, res) =>
+{
+
+
+        const username = req.body["username"];
+        const password = req.body["password"];
+
+        if (loginGetUser(username, password))
+        {
+            res.sendStatus(200); // 返回200回去
+        }
+        else
+        {
+            res.status(400).send("We do not find your registed information.");
+        }
 })
 
 
