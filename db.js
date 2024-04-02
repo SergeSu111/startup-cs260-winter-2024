@@ -20,6 +20,25 @@ const bcrypt = require("bcrypt");
 process.exit(1);
 });
 
+async function createUser(userName, password)
+{
+    const passwordHash = await bcrypt.hash(password, 10); // 将passwordhash 加密
+
+    const user = 
+    {
+        username: userName,
+        password: passwordHash,
+        token: uuid.v4(), // randomly get a token if user registers
+    };
+    await userCollection.insertOne(user); // add the user into db's userCollection
+}
+
+
+
+
+
+
+
 
 
 
