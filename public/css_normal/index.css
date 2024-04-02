@@ -70,8 +70,24 @@ menu
 
 .form
 {
-    text-align: center;
+    /* text-align: center; */
+
+
 }
+
+.form input
+{
+    vertical-align: middle; 
+    /* 将两个input password 和username 垂直居中对其 */
+    
+}
+.form button
+{
+    left: 4.3rem;
+    position:relative;
+
+}
+
 
 footer
 {

@@ -7,7 +7,12 @@ function log_in()
     window.location.href = "home_page.html";
 }
 
-my_button.addEventListener("click", function(event){
-    event.preventDefault();
-    log_in();
-});
+// my_button.addEventListener("click", function(event){
+//     event.preventDefault();
+//     log_in();
+// });
+
+async function register()
+{
+    
+}

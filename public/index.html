@@ -40,11 +40,16 @@
         <p class = "describe">Login to navigate the journey</p>
 
         <!-- form for get data to login -->
-        <form method="get" class = "form">
-            <label for="name">Name</label>
-            <input type="text" id="name" placeholder="Your name here">
-            <button type="submit" id = "my_button">Login</button>  <button type = "register" id = "my_register">Register</button>
-        </form>
+        <div class = "form">
+            <label for="name">Username</label>
+            <input type="text" id="name" placeholder="Your name here"> <br>
+            <label for="password">Passowrd</label>
+            <input type = "text" id = "password" placeholder = "Your password here">
+            <div>
+                <button onclick= "log_in()" id = "login">Login</button>  <button type = "register" id = "my_register">Register</button>
+            </div>
+           
+        </div>
        
     </main>
     <hr>
