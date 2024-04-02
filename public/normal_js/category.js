@@ -32,7 +32,7 @@ async function loadCategoriesFromServer() {
 
 
     // get the categories from server
-    const response = await fetch("/getCategories");
+    const response = await fetch("/categories/:username");
     //console.log(response.json()); // make json to be object
     const categories = await response.json();
     console.log(categories); 

@@ -65,13 +65,14 @@ app.post("/submit_form", upload.none(), (req, res) =>
 
 
 // 从server里得到用户输入数据 
-app.get("/getWebInforsFromDB", (_req,res) =>
+app.get("/info/:username", (_req,res) =>
 {
+    const username = req.params.username;
     res.send(my_web_Infors); // 将这个array as db 传回给用户
 })
 
 
-app.get("/getCategories", (_req, res) =>
+app.get("/categories/:username", (_req, res) =>
 {
     res.send(defaultCategories);
 })

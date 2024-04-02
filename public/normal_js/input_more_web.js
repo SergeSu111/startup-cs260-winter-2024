@@ -77,7 +77,7 @@ function input_web()
 
 async function loadWebsiteFromServer() {
   
-    const myWebInforsFromDB = await fetch("/getWebInforsFromDB");  // get the webInfors from server, default is fetch
+    const myWebInforsFromDB = await fetch("/info/:username");  // get the webInfors from server, default is fetch
 
     for (let i = 0; i < myWebInforsFromDB.length; i++)
     {
