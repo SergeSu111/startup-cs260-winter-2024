@@ -34,6 +34,10 @@ async function createUser(userName, password)
 }
 
 
+module.exports = 
+{
+    createUser,
+}
 
 
 

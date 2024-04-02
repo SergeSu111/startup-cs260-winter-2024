@@ -1,4 +1,5 @@
 const express = require("express"); // get the express 
+const createApplication = require("express/lib/express");
 const app = express(); // construct the express to app
 const multer = require("multer"); // just pasing the formData type requests. 
 const upload = multer({});
@@ -77,7 +78,21 @@ app.get("/categories/:username", (_req, res) =>
     res.send(defaultCategories);
 })
 
-// multer
+app.post("/register/:username", (req, res) =>
+{
+    try
+    {
+        const username = req.body["username"]; // get the request username
+        const password = req.body["password"]; // get request password
+    
+        // put the username into the db function
+        createUser(username, password); // stored in db
+    }
+    catch (error)
+    {
+        res.status(400).send(error.message);
+    }
+})
 
 
 function updateWeb(webInfor)
