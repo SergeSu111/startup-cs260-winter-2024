@@ -1,10 +1,10 @@
 let my_button = document.querySelector("#my_button");
 
-let username = document.querySelector("#name").value; 
-let password = document.querySelector("#password").value; // 把密码拿过来
 
 async function log_in()
 {
+        let username = document.querySelector("#name").value; 
+        let password = document.querySelector("#password").value; // 把密码拿过来
 
         const response = await fetch('/login/:username', {  // fetch request to backend 
             method: 'POST',
@@ -25,10 +25,13 @@ async function log_in()
 
 async function register()
 {
+    let username = document.querySelector("#name").value; 
+    let password = document.querySelector("#password").value; // 把密码拿过来
+
     const response = await fetch("/register/:username", {
         method: "POST",
         headers: {"content-type": "application/json"},
-        body: JSON.stringify({"username": username, "password": passowrd})
+        body: JSON.stringify({"username": username, "password": password})
     });
 
     if (response.ok)

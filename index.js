@@ -3,6 +3,7 @@ const app = express(); // construct the express to app
 const db = require("./db.js"); // call db file
 const multer = require("multer"); // just pasing the formData type requests. 
 const cookieParser = require("cookie-parser");
+const bcrypt = require("bcrypt");
 const upload = multer({});
 // get the serivce port 4000, 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -35,7 +36,7 @@ app.post("/register/:username", async (req, res) =>
 {
     try
     {
-        const username = req.body["username"]; // get the request username
+        const username = req.body.username; // get the request username
         const password = req.body["password"]; // get request password
     
         // if the user already in db
@@ -117,10 +118,11 @@ secureApiRouter.post("/submit_form/:username", upload.none(), (req, res) =>
 });
 
 // 从server里得到用户输入数据 
-secureApiRouter.get("/info/:username", (_req,res) =>
+secureApiRouter.get("/info/:username", async (_req,res) =>
 {
-    const username = req.params.username;
-    res.send(my_web_Infors); // 将这个array as db 传回给用户
+    const username = _req.params.username;
+    const returnWebsite = await db.getWebInformation(username);
+    res.send(returnWebsite); // 将这个array as db 传回给用户
 })
 
 

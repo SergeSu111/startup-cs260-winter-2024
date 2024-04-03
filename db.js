@@ -60,8 +60,14 @@ async function submitForm(formData, my_username)
 
 }
 
-async function getWebInformation()
-{
+async function getWebInformation(username)
+{  
+    const query = {"username": username};
+    const projection = {projection: {"webinformation":1, _id: 0}};
+    const result = webCollection.find(query, projection);
+    return result.toArray();
+    
+
     
 }
 
@@ -73,6 +79,7 @@ module.exports =
     loginGetUser,
     addingWebsite,
     submitForm,
+    getWebInformation,
 }
 
 
