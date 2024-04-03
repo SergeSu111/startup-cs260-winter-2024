@@ -105,8 +105,9 @@ secureApiRouter.post("/addingWebsite/:username", (req, res) =>
 secureApiRouter.post("/submit_form/:username", upload.none(), (req, res) =>
 {
     try{
+        const my_username = req.params.username;
         const formData = req.body;
-        db.submitForm(formData); // putting formData into database.
+        db.submitForm(formData, my_username); // putting formData into database.
         res.sendStatus(200);
     }
     catch (error)

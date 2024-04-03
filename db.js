@@ -52,9 +52,10 @@ async function addingWebsite(webInformation, the_username)
 
 
 // for submit suggestion form
-async function submitForm(formData)
+async function submitForm(formData, my_username)
 {
-    await formCollection.insertOne(formData); 
+    const wholeSubmitForm = {"username":my_username, "form": formData};
+    await formCollection.insertOne(wholeSubmitForm); 
     // insert this formData into DB.
 
 }
