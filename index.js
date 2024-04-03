@@ -109,8 +109,6 @@ app.post("/submit_form", upload.none(), (req, res) =>
     }
 });
 
-
-
 // 从server里得到用户输入数据 
 app.get("/info/:username", (_req,res) =>
 {
@@ -140,13 +138,21 @@ function updateWeb(webInfor)
         // create a new category in defaultCategories and give the value 1
         defaultCategories[webInfor.category] = 1;
     }
-        
-    
     // update web spot 
 
     my_web_Infors.push(webInfor); 
     // 将用户input的webInfor放入array中 暂时当作db用. 
     // 只需要做这一步 因为 不管用户输入的input是否在数据库里 都需要加到数据库里
+}
+
+// 每当用户login的时候 都会 带着返回一个AuthCookie 来证明用户当前的用户状态
+function setAuthCookie(res, authToken)
+{
+    res.cookie(authCookieName, authToken, {
+        secure: true,
+        httpOnly: true,
+        sameSite: "strict", 
+    });
 }
 
 
