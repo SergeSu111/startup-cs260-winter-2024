@@ -129,7 +129,7 @@ app.get("/categories/:username", (_req, res) =>
 
 
 
-function updateWeb(webInfor)
+async function updateWeb(webInfor)
 {
     // update category 
     // if the webInfor.category in defaltCategries. 
@@ -145,9 +145,7 @@ function updateWeb(webInfor)
     }
     // update web spot 
 
-    my_web_Infors.push(webInfor); 
-    // 将用户input的webInfor放入array中 暂时当作db用. 
-    // 只需要做这一步 因为 不管用户输入的input是否在数据库里 都需要加到数据库里
+    await db.addingWebsite(webInfor);  // 调用db 函数将网站信息放入db里
 }
 
 // 每当用户login的时候 都会 带着返回一个AuthCookie 来证明用户当前的用户状态
