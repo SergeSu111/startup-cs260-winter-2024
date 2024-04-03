@@ -84,7 +84,7 @@ async function loadWebsiteFromServer() {
          // pass that data as parameters into createWebsiteElement(...)
         create_website_document(myWebInforsFromDB[i].url, myWebInforsFromDB[i].des, myWebInforsFromDB[i].img, myWebInforsFromDB[i].title); // take the data from local storage and create the website again
     }
-       
+        
 }
 
 async function fetch_new_web(my_object)  // for 总的
