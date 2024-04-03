@@ -18,7 +18,9 @@ async function log_in()
         else
         {
         
+            alert("You do not have the information.");
             alert((await response.json()).message); // 否则的话返回后端返回的消息
+
         }
     }
 
