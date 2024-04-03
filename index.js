@@ -77,10 +77,15 @@ app.post ("/login/:username", async (req, res) =>
         }
 })
 
+// after user login the normal api should become secureApiRouter DUE TO COOKIES
+var secureApiRouter = express.Router();
+app.use(secureApiRouter);
 
-app.post("/addingWebsite", (req, res) =>
+
+
+secureApiRouter.post("/addingWebsite/:username", (req, res) =>
 {
-    console.log("Hello: ", req.body);
+    //console.log("Hello: ", req.body);
     let reqObj = req.body; // 将req 转换为js object
     try
     {
@@ -148,7 +153,7 @@ function updateWeb(webInfor)
 // 每当用户login的时候 都会 带着返回一个AuthCookie 来证明用户当前的用户状态
 function setAuthCookie(res, authToken)
 {
-    res.cookie(authCookieName, authToken, {
+    res.cookie(authCookieName, authToken, {  // response 里带着cookie 
         secure: true,
         httpOnly: true,
         sameSite: "strict", 
