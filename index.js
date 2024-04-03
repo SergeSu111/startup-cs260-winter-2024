@@ -131,6 +131,11 @@ secureApiRouter.get("/categories/:username", (_req, res) =>
     res.send(defaultCategories);
 })
 
+app.delete('/logout', (_req, res) => {
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+  });
+
 
 
 async function updateWeb(webInfor, my_username)

@@ -1,5 +1,24 @@
 let my_button = document.querySelector("#my_button");
 
+
+// for logout 
+async function logout()
+{
+    //let logOutButton = document.querySelector("#logOut"); // grab that button 
+    const response = await fetch('/logout', {  // fetch request to backend 
+        method: 'DELETE',
+    });
+    if (response.ok)
+    {
+        alert("You successfully logout.");
+        window.location.href = "/";
+    }
+   
+
+}
+    
+
+
 function create_website_document(url, descript, input_img, title)
 {
     let big_whole_div = document.querySelector(".main-container");
@@ -78,7 +97,7 @@ function input_web()
 async function loadWebsiteFromServer() {
   
     const response = await fetch("/info/:username");  // get the webInfors from server, default is fetch
-    const myWebInforsFromDB = await response.json();
+    const myWebInforsFromDB = await response.json(); // make the json be js array
     for (let i = 0; i < myWebInforsFromDB.length; i++)
     {
          // pass that data as parameters into createWebsiteElement(...)
