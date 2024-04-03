@@ -87,9 +87,10 @@ secureApiRouter.post("/addingWebsite/:username", (req, res) =>
 {
     //console.log("Hello: ", req.body);
     let reqObj = req.body; // 将req 转换为js object
+    const my_username =  req.params.username; // get the username 
     try
     {
-        updateWeb(reqObj); // 将转换后的reqObj 放入updateWeb来得到response which is a webSpot
+        updateWeb(reqObj, my_username); // 将转换后的reqObj 放入updateWeb来得到response which is a webSpot
         res.sendStatus(200);
     }
     catch
@@ -101,7 +102,7 @@ secureApiRouter.post("/addingWebsite/:username", (req, res) =>
 );
 
 // uploard.none() menas just submitting text.
-app.post("/submit_form/:username", upload.none(), (req, res) =>
+secureApiRouter.post("/submit_form/:username", upload.none(), (req, res) =>
 {
     try{
         const formData = req.body;
@@ -115,21 +116,21 @@ app.post("/submit_form/:username", upload.none(), (req, res) =>
 });
 
 // 从server里得到用户输入数据 
-app.get("/info/:username", (_req,res) =>
+secureApiRouter.get("/info/:username", (_req,res) =>
 {
     const username = req.params.username;
     res.send(my_web_Infors); // 将这个array as db 传回给用户
 })
 
 
-app.get("/categories/:username", (_req, res) =>
+secureApiRouter.get("/categories/:username", (_req, res) =>
 {
     res.send(defaultCategories);
 })
 
 
 
-async function updateWeb(webInfor)
+async function updateWeb(webInfor, my_username)
 {
     // update category 
     // if the webInfor.category in defaltCategries. 
@@ -145,7 +146,7 @@ async function updateWeb(webInfor)
     }
     // update web spot 
 
-    await db.addingWebsite(webInfor);  // 调用db 函数将网站信息放入db里
+    await db.addingWebsite(webInfor, my_username);  // 调用db 函数将网站信息放入db里
 }
 
 // 每当用户login的时候 都会 带着返回一个AuthCookie 来证明用户当前的用户状态

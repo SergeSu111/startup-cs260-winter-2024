@@ -43,9 +43,10 @@ async function loginGetUser(username)
 
 
 // for input web information
-async function addingWebsite(webInformation)
+async function addingWebsite(webInformation, the_username)
 {
-    await webCollection.insertOne(webInformation); 
+    let wholeWebinformation = {"username": the_username, "webinformation":webInformation};
+    await webCollection.insertOne(wholeWebinformation); 
     // insert this webInformation into db.
 }
 
