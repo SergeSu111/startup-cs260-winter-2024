@@ -50,12 +50,22 @@ async function addingWebsite(webInformation)
 }
 
 
+// for submit suggestion form
+async function submitForm(formData)
+{
+    await formCollection.insertOne(formData); 
+    // insert this formData into DB.
+
+}
+
+
 
 module.exports = 
 {
     createUser,
     loginGetUser,
     addingWebsite,
+    submitForm,
 }
 
 

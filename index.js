@@ -101,7 +101,7 @@ secureApiRouter.post("/addingWebsite/:username", (req, res) =>
 );
 
 // uploard.none() menas just submitting text.
-app.post("/submit_form", upload.none(), (req, res) =>
+app.post("/submit_form/:username", upload.none(), (req, res) =>
 {
     try{
         const formData = req.body;

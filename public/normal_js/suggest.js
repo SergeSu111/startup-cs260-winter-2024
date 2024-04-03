@@ -22,7 +22,7 @@ async function submit(event)
     event.preventDefault();  //阻止提交默认表单
 
     // do a post fetch 
-        const response = await fetch('/submit_form', {
+        const response = await fetch('/submit_form/:username', {
             method: 'POST',
             body: new FormData(event.target) // formData is json object?
         });
