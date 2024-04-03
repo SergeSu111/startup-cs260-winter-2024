@@ -1,8 +1,8 @@
 const express = require("express"); // get the express 
-const createApplication = require("express/lib/express");
 const app = express(); // construct the express to app
+const db = require("./db.js"); // call db file
 const multer = require("multer"); // just pasing the formData type requests. 
-const { loginGetUser } = require("./db");
+
 const upload = multer({});
 // get the serivce port 4000, 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -13,15 +13,13 @@ app.use(express.json());
 // static the front end conent
 app.use(express.static("public"));
 
+app.use(cookieParser()); // to process cookie 
 
+app.set("trust proxy", true); // for websokect
 
-// Router for service endpoints 
-// var apiRouter = express.Router();
-// app.use("/api", apiRouter);
+// const { cookie } = require("express/lib/response.js");
 
-// Specific endpoints
-let my_web_Infors = [];
-let my_submit = [];
+const authCookieName = "token"; // set the cookieheader as token? 
 
 
 const defaultCategories = {  // PUT INTO BACK END  不用localstorage 了
@@ -31,6 +29,53 @@ const defaultCategories = {  // PUT INTO BACK END  不用localstorage 了
     "Shopping": 1,
     "Delivery": 1
 };
+
+
+app.post("/register/:username", async (req, res) =>
+{
+    try
+    {
+        const username = req.body["username"]; // get the request username
+        const password = req.body["password"]; // get request password
+    
+        // if the user already in db
+        if (await db.loginGetUser(username,password))
+        {
+            res.status(409).send({msg: "Existing user."});
+        }
+        else
+        {
+            // put the username into the db function
+            await db.createUser(username, password); // stored in db
+            res.sendStatus(200); // send back 200
+        }
+    }
+    catch (error)
+    {
+        res.status(400).send(error.message);
+    }
+})
+
+
+// because the req and res get from db. it is promise, so need to write await and async
+app.post ("/login/:username", async (req, res) =>
+{
+        const username = req.body["username"];
+        const password = req.body["password"];
+        const user = await db.loginGetUser(username); // call db to see if user is here by username
+        if (user)
+        {   if (await bcrypt.compare(password, user.password))
+            {
+                setAuthCookie(res, user.token); // 那么设置用户的cookie
+                res.sendStatus(200); // 返回200回去
+            }
+            else{res.status(404).send("I cannot find your password.")};
+        }
+        else
+        {
+            res.status(400).send("We do not find your registed information.");
+        }
+})
 
 
 app.post("/addingWebsite", (req, res) =>
@@ -79,40 +124,6 @@ app.get("/categories/:username", (_req, res) =>
     res.send(defaultCategories);
 })
 
-app.post("/register/:username", (req, res) =>
-{
-    try
-    {
-        const username = req.body["username"]; // get the request username
-        const password = req.body["password"]; // get request password
-    
-        // put the username into the db function
-        createUser(username, password); // stored in db
-        res.sendStatus(200); // send back 200
-    }
-    catch (error)
-    {
-        res.status(400).send(error.message);
-    }
-})
-
-
-app.post ("/login/:username", (req, res) =>
-{
-
-
-        const username = req.body["username"];
-        const password = req.body["password"];
-
-        if (loginGetUser(username, password))
-        {
-            res.sendStatus(200); // 返回200回去
-        }
-        else
-        {
-            res.status(400).send("We do not find your registed information.");
-        }
-})
 
 
 function updateWeb(webInfor)
@@ -139,7 +150,9 @@ function updateWeb(webInfor)
 }
 
 
+
 app.listen(port, () => 
 {
     console.log(`Listening on port ${port}`);
 });
+

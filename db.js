@@ -33,9 +33,10 @@ async function createUser(userName, password)
     await userCollection.insertOne(user); // add the user into db's userCollection
 }
 
-function loginGetUser(userName, password)
+function loginGetUser(username)
 {
-    return userCollection.findOne({"username": usernmae, "password": password}); // return t or f.
+    
+    return userCollection.findOne({"username": username}); // return the users
 }
 
 
