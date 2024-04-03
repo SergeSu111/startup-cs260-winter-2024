@@ -105,7 +105,7 @@ app.post("/submit_form/:username", upload.none(), (req, res) =>
 {
     try{
         const formData = req.body;
-        my_submit.push(formData);
+        db.submitForm(formData); // putting formData into database.
         res.sendStatus(200);
     }
     catch (error)
