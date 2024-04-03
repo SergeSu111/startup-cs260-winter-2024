@@ -93,6 +93,12 @@ a {
     color: black;
 }
 
+
+#logoutParent
+{
+    display: flex;
+    justify-content: center;
+}
 footer
 {
     color: white;

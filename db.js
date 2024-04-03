@@ -63,12 +63,9 @@ async function submitForm(formData, my_username)
 async function getWebInformation(username)
 {  
     const query = {"username": username};
-    const projection = {projection: {"webinformation":1, _id: 0}};
+    const projection = {projection: {"webinformation":1, _id: 0}}; // what this means?
     const result = webCollection.find(query, projection);
     return result.toArray();
-    
-
-    
 }
 
 

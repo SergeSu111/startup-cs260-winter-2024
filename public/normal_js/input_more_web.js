@@ -77,12 +77,13 @@ function input_web()
 
 async function loadWebsiteFromServer() {
   
-    const myWebInforsFromDB = await fetch("/info/:username");  // get the webInfors from server, default is fetch
-
+    const response = await fetch("/info/:username");  // get the webInfors from server, default is fetch
+    const myWebInforsFromDB = await response.json();
     for (let i = 0; i < myWebInforsFromDB.length; i++)
     {
          // pass that data as parameters into createWebsiteElement(...)
-        create_website_document(myWebInforsFromDB[i].url, myWebInforsFromDB[i].des, myWebInforsFromDB[i].img, myWebInforsFromDB[i].title); // take the data from local storage and create the website again
+        create_website_document(myWebInforsFromDB[i].webinformation.url, myWebInforsFromDB[i].webinformation.des, myWebInforsFromDB[i].webinformation.img, myWebInforsFromDB[i].webinformation.title); // take the data from local storage and create the website again
+        console.log(myWebInforsFromDB[i].url);
     }
 }
 
