@@ -92,7 +92,7 @@ async function fetch_new_web(my_object)  // for 总的
     //console.log("hELLO: ", my_object);
     try
     {
-        const response = await fetch('/addingWebsite', {
+        const response = await fetch('/addingWebsite/:username', {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(my_object),

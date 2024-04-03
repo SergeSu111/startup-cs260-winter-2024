@@ -20,6 +20,7 @@ const bcrypt = require("bcrypt");
 process.exit(1);
 });
 
+// for register
 async function createUser(userName, password)
 {
     const passwordHash = await bcrypt.hash(password, 10); // 将passwordhash 加密
@@ -33,12 +34,20 @@ async function createUser(userName, password)
     await userCollection.insertOne(user); // add the user into db's userCollection
 }
 
-function loginGetUser(username)
+// for login
+async function loginGetUser(username)
 {
     
-    return userCollection.findOne({"username": username}); // return the users
+    return await userCollection.findOne({"username": username}); // return the users
 }
 
+
+// for input web information
+async function addingWebsite(webInformation)
+{
+    await webCollection.insertOne(webInformation); 
+    // insert this webInformation into db.
+}
 
 
 
@@ -46,6 +55,7 @@ module.exports =
 {
     createUser,
     loginGetUser,
+    addingWebsite,
 }
 
 
