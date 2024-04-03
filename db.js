@@ -58,6 +58,11 @@ async function submitForm(formData)
 
 }
 
+async function getWebInformation()
+{
+    
+}
+
 
 
 module.exports = 

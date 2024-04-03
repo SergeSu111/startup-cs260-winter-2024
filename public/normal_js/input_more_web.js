@@ -90,8 +90,7 @@ async function loadWebsiteFromServer() {
 async function fetch_new_web(my_object)  // for 总的
 {
     //console.log("hELLO: ", my_object);
-    try
-    {
+   
         const response = await fetch('/addingWebsite/:username', {
             method: 'POST',
             headers: {'content-type': 'application/json'},
@@ -102,11 +101,7 @@ async function fetch_new_web(my_object)  // for 总的
         {
             alert((await response.json()).message); // get back the error message from the server
         }
-    }
-    catch
-    {
-        alert("");
-    }
+  
     
 }
 

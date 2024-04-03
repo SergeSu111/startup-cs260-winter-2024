@@ -2,7 +2,7 @@ const express = require("express"); // get the express
 const app = express(); // construct the express to app
 const db = require("./db.js"); // call db file
 const multer = require("multer"); // just pasing the formData type requests. 
-
+const cookieParser = require("cookie-parser");
 const upload = multer({});
 // get the serivce port 4000, 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
