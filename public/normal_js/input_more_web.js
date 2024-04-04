@@ -71,7 +71,7 @@ function create_website_document(url, descript, input_img, title)
     big_whole_div.appendChild(big_div); // after all set, append big_div into big_body
 }
 
-function input_web()
+async function input_web()
 {
     let url = prompt("Please tell me a website's url that you want to add.");
     let descript = prompt("Please tell me the description of the website you want to add.");
@@ -87,10 +87,14 @@ function input_web()
         title: title,
         category: category
     };
-
-    fetch_new_web(my_object); // call this already updated my category and store the input into db
-
-    create_website_document(url, descript, input_img, title); // because this is for dom, I will not write this in back-end
+    //truthy true or valid promosie is valid object. 
+    const response = await fetch_new_web(my_object);
+    console.log(response);
+    // if return true, which means user logged in 
+    if (response) // call this already updated my category and store the input into db
+    {
+        create_website_document(url, descript, input_img, title); // because this is for dom, I will not write this in back-end
+    }
 }
 
 
@@ -115,11 +119,20 @@ async function fetch_new_web(my_object)  // for 总的
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(my_object),
         });
-
-        if (!response.ok)
+        if (response.status == 401)
+        {
+            return false;
+        }
+        else if (!response.ok)
         {
             alert((await response.json()).message); // get back the error message from the server
+            return false;
         }
+        else if (response.ok)
+        {
+            return true;
+        }
+        
   
     
 }

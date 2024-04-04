@@ -88,7 +88,7 @@ secureApiRouter.use(async (req, res, next) => {
     // 在cookie header里有一个authToken
     authToken = req.cookies[authCookieName]; 
     // 根据这个authtoken来从数据库里拿出来用户
-    const user = await DB.getUserByToken(authToken);
+    const user = await db.getUserByToken(authToken);
     if (user) {
       next();
     } else {
