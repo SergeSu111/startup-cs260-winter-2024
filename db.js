@@ -50,6 +50,9 @@ async function addingWebsite(webInformation, the_username)
     // insert this webInformation into db.
 }
 
+function getUserByToken(token) {
+    return userCollection.findOne({ token: token });
+  }
 
 // for submit suggestion form
 async function submitForm(formData, my_username)
@@ -77,6 +80,8 @@ module.exports =
     addingWebsite,
     submitForm,
     getWebInformation,
+    getUserByToken,
+    
 }
 
 

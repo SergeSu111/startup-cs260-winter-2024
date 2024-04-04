@@ -79,10 +79,22 @@ app.post ("/login/:username", async (req, res) =>
 })
 
 // after user login the normal api should become secureApiRouter DUE TO COOKIES
-var secureApiRouter = express.Router();
+var secureApiRouter = express.Router(); 
 app.use(secureApiRouter);
 
-
+// 给secureApiRouter 添加功能
+secureApiRouter.use(async (req, res, next) => {
+    // 拿到用户登录和注册的authToken 因为用户在登录的时候会设置一个cookie, cookies的名字是authCookieName
+    // 在cookie header里有一个authToken
+    authToken = req.cookies[authCookieName]; 
+    // 根据这个authtoken来从数据库里拿出来用户
+    const user = await DB.getUserByToken(authToken);
+    if (user) {
+      next();
+    } else {
+      res.status(401).send({ msg: 'Unauthorized' });
+    }
+  });
 
 secureApiRouter.post("/addingWebsite/:username", (req, res) =>
 {
