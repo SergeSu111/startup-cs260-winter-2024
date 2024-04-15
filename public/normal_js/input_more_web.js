@@ -131,6 +131,7 @@ async function fetch_new_web(my_object)  // for 总的
         else if (response.ok)
         {
             return true;
+            
         }
         
   

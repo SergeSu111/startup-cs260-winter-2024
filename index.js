@@ -4,6 +4,7 @@ const db = require("./db.js"); // call db file
 const multer = require("multer"); // just pasing the formData type requests. 
 const cookieParser = require("cookie-parser");
 const bcrypt = require("bcrypt");
+const { peerProxy } = require("./peerProxy.js");
 const upload = multer({});
 // get the serivce port 4000, 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -181,8 +182,11 @@ function setAuthCookie(res, authToken)
 
 
 
-app.listen(port, () => 
+const httpService = app.listen(port, () => 
 {
     console.log(`Listening on port ${port}`);
 });
+
+
+peerProxy(httpService);
 
