@@ -16,15 +16,21 @@ function peerProxy(httpServer) {
   let connections = [];
 
   wss.on('connection', (ws) => {
+    // console.log("connection");
     const connection = { id: uuid.v4(), alive: true, ws: ws };
     connections.push(connection);
 
     // Forward messages to everyone except the sender
     ws.on('message', function message(data) {
+      data = JSON.stringify(JSON.parse(data));
+      // console.log("message");
       connections.forEach((c) => {
-        if (c.id !== connection.id) {
-          c.ws.send(data);
-        }
+        console.log(data);
+        c.ws.send(data);
+        // if (c.id !== connection.id) { // filters out the person who sent the message
+        //   console.log("Sending message. ID:", c.id);
+        //   c.ws.send(data);
+        // }
       })
     });
 

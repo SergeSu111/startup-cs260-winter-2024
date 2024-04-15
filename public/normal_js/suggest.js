@@ -1,15 +1,4 @@
 
-setInterval(() => {
-    
-    m_list = ["Bob submitted a suggestion", "Tom submitted a suggestion", "Stephen submitted a suggestion", "Lee submitted a suggestion,", "Issac submitted a suggestion"];
-
-            let i = Math.round(Math.random() * 4); 
-            let suggestion_announce = m_list[i];
-            const chatText = document.querySelector(".web_socket");
-            chatText.innerHTML +=
-            `<div class="event"><span class="player-event">${suggestion_announce}</span></div>`;
-},5000);
-
 
 
 // for front-end request of submit
@@ -28,8 +17,9 @@ async function submit(event)
         });
         if (response.ok)
         {
+            socket.send(JSON.stringify({ username: localStorage.getItem("username")}));
             console.log("The form is submitted successfully."); 
-            alert("The form is submitted successfully.");
+            //alert("The form is submitted successfully.");
         }
         else
         {
@@ -60,6 +50,22 @@ function displayQuote() {
   }
 
   displayQuote();
-    
+  let socket;
+  function configureWebSocket() {
+        const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+        socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+        socket.onmessage = async (event) => {
+            const message = JSON.parse(event.data);
+            console.log(message);
+            const text = message.username;
+            displayMsg(text + " submit the suggestion.");
+        };
+    }
 
-    
+configureWebSocket();
+  function displayMsg(msg) {
+    const chatText = document.querySelector(".web_socket");
+    chatText.innerHTML +=
+    `<div class="event"><span class="player-event">${msg}</span></div>`;
+  }
+

@@ -13,6 +13,7 @@ async function log_in()
         });
         if (response.ok)
         {
+            localStorage.setItem("username", username);  // Store username in localStorage
             window.location.href = "home_page.html";
         }
         else
@@ -22,7 +23,7 @@ async function log_in()
             alert((await response.json()).message); // 否则的话返回后端返回的消息
 
         }
-    }
+}
 
 
 async function register()
