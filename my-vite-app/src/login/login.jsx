@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+// import "bootstrap/dist/css/bootstrap.min.css";
 
 
 // Login component
