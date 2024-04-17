@@ -11,13 +11,14 @@
 
 a {
     text-decoration: none;
-    color: white;
+    color: white !important;
+   
 }
 
 body {
-    font-family: "Protest Riot", sans-serif;
+    font-family: "Protest Riot", sans-serif !important;
     background-image: url('/images/index.png');
-    color:white;
+    color:white !important;
 }
 
 menu

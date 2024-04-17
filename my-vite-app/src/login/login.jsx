@@ -6,9 +6,9 @@ import "./index.css";
 
 // Login component
 
-function Login()
+function Login({userName,onAuthChange})
 {
-    const [username, setUsername] = useState("");
+    const [username, setUsername] = useState(userName);
     const [password, setPssword] = useState("");
 
     async function logIn()
@@ -21,7 +21,7 @@ function Login()
         if (response.ok)
         {
             localStorage.setItem("username", username);  // Store username in localStorage
-            window.location.href = "home_page.html";
+            onAuthChange(username);
         }
         else
         {
@@ -51,8 +51,13 @@ function Login()
     }
 
     return (
-        <div class = "form">
-            <label for="name">Username</label>
+        <>
+        <main className = "main">
+            {/* <!-- greeting --> */}
+            <h1 className = "h1_main">Welcome to Web Killer</h1>
+            <p className = "describe">Login to navigate the journey</p>
+            <div className = "form">
+            <label htmlFor="name">Username</label>
             <input type="text" id = "name" placeholder="Your name here" value = {username} onChange = {(e) => setUsername(e.target.value)}/>
             <br />
             <label htmlFor="passowrd">Pssword</label>
@@ -62,6 +67,14 @@ function Login()
                 <button onClick = {regitser} id = "my_register">Resgiter</button>
             </div>
         </div>
+        </main>
+         <hr />
+         <footer className = "footer">
+             <div className ="text-reset">Junhao Su</div>
+             <a href="https://github.com/SergeSu111/startup-cs260-winter-2024">My github repository</a>
+         </footer>
+        </>
+        
     );
 }
 

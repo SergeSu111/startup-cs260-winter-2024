@@ -1,42 +1,97 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+
+
+
+.light {
+  img {
+      max-width: 23px;
+      max-height: 23px;
+  }
+}
+
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+body {
+  font-family: "Protest Riot", sans-serif;
+  background-image: url('/images/index.png');
+  color:white;
+}
+
+menu
+{
+  display: flex;
+  list-style-type: none;
+}
+
+.li
+{
+  flex: 1;
+  display:inline-block;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.title
+{
+  display: flex;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.small_title
+{
+  flex: 1;
+  text-align: center;
+  font-size: 35px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.main
+{
+  display: flex;
+  height: 700px;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
 }
 
-.card {
-  padding: 2em;
+.main h1
+{
+  text-align: center;
 }
 
-.read-the-docs {
-  color: #888;
+.describe
+{
+  text-align: center;
+  margin: 5px;
+}
+
+.form input
+{
+  vertical-align: middle; 
+  /* 将两个input password 和username 垂直居中对其 */
+  
+}
+.form button
+{
+  left: 4.3rem;
+  position:relative;
+
+}
+
+
+footer
+{
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  height: 30px;
+}
+
+
+#root
+{
+  width:100%;
 }
