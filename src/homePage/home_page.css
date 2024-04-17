@@ -1,0 +1,105 @@
+body
+{
+    margin: 0px;
+    font-family: "Protest Riot", sans-serif;
+    background-image: url('../images/index.png');
+}
+
+.body
+{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+header, footer
+{ 
+    flex: 0;
+}
+
+.light {
+    img {
+        max-width: 23px;
+        max-height: 23px;
+    }
+}
+
+menu
+{
+    display: flex;
+    list-style-type: none;
+}
+
+.li
+{
+    flex: 1;
+    display:inline-block;
+    text-align: center;
+
+}
+
+.title
+{
+    display: flex;
+}
+
+.small_title
+{
+    flex: 1;
+    text-align: center;
+    font-size: 35px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+
+/* .parent_byu
+{
+    position: relative;
+    display: flex;
+} */
+.parent_byu img
+{
+    width: 100%;
+    height: 100%;
+
+}
+
+.my_main
+{
+    display:flex;
+    flex:1;
+    flex-direction: column;
+
+}
+
+.main-container
+{
+    padding: 3rem;
+    height: 100%;
+    width: 100%;
+}
+
+.card {
+    margin: 3rem 0 0 0;
+}
+
+
+.Goweb
+{
+    color: black;
+}
+
+
+#logoutParent
+{
+    display: flex;
+    justify-content: center;
+}
+footer
+{
+    color: white;
+}
